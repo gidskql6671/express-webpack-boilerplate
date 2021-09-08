@@ -9,7 +9,8 @@
     "watch": "webpack -w"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.15.4",
+    "@babel/runtime-corejs3": "^7.15.4",
     "cookie-parser": "^1.4.5",
     "debug": "^4.3.2",
     "express": "^4.17.1",
@@ -21,6 +22,7 @@
     "@babel/preset-env": "^7.15.4",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",

@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: ['@babel/polyfill', './client-src/js/main.js'],
+    entry: ['./client-src/js/main.js'],
     
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -20,7 +20,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: [
+                            ['@babel/preset-env', {
+                                "targets": {
+                                "browsers" : ["last 2 versions", "ie >= 11"]
+                              },
+                                "useBuiltIns": "usage",
+                                "corejs": {
+                                    version: 3,
+                                    proposals: true
+                                }
+                            }]
+                        ],
                     }
                 }
             },
@@ -28,11 +39,27 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     "style-loader",
-                    "css-loader",
-                    "sass-loader"
+                    {
+                        loader: "css-loader",
+                        options: {
+                            url: false
+                        }
+                    },
+                    "sass-loader",
                 ],
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]',
+                        context: path.resolve(__dirname, 'client-src'),
+                        publicPath: "/static/images/"
+                    }
+                }
+            },
         ]
     },
     plugins: [
