@@ -56,7 +56,7 @@ module.exports = {
                     options: {
                         name: '[path][name].[ext]',
                         context: path.resolve(__dirname, 'client-src'),
-                        publicPath: "/static/images/"
+                        publicPath: "/static/"
                     }
                 }
             },
