@@ -3,32 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "dev": "webpack serve",
-    "build": "webpack",
-    "watch": "webpack -w"
+    "build": "cd frontend && yarn frontend:build",
+    "buildDev": "cd frontend && yarn frontend:buildDev",
+    "watch": "cd frontend && yarn frontend:watch",
+    
+    "prestart": "yarn build",
+    "start": "cd backend && yarn backend:start",
+    
+    "preDev": "yarn buildDev",
+    "dev": "cd backend && yarn backend:dev"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.15.4",
-    "@babel/runtime-corejs3": "^7.15.4",
-    "cookie-parser": "^1.4.5",
-    "debug": "^4.3.2",
-    "express": "^4.17.1",
-    "http-errors": "^1.8.0",
-    "morgan": "^1.10.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.4",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.2",
-    "node-sass": "^6.0.1",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.2.1",
-    "webpack": "^5.52.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.1.0"
-  }
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
 }
