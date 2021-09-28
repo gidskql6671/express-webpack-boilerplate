@@ -1,2 +1,2 @@
-import '../sass/main.scss';
-import sample from '../images/sample.jpg';
+import './assets/sass/main.scss';
+import sample from './assets/images/sample.jpg';
